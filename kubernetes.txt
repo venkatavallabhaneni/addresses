@@ -1,0 +1,36 @@
+### docker
+
+docker image build -t vallabhaneni1982/addresses:latest .
+docker image push -t vallabhaneni1982/addresses:latest
+
+
+## start minikube in windows and create VM's ##
+
+create a virtual switch "MyMiniKube"
+
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+
+minikube start --kubernetes-version="v1.15.5" --vm-driver="hyperv" --hyperv-virtual-switch="MyMiniKube"
+
+or alternatevely set desktop for windows to use kuberentes cluster
+
+##### Deploy first microservice docker image ------
+
+> kubectl run addresses --image vallabhaneni1982/addresses:latest --port=8080
+> kubectl get deployments // get deployments
+> kubectl get rs   // get replica sets
+> kubectl get pods // get pods
+> kubectl get nodes
+
+## create / expose deployment as service
+> kubectl expose deployment addresses --type=NodePort
+> kubectl get services
+> kubectl describe services addresses
+> kubectl  logs <<podname>>
+> kubectl describe pods <<podname>>
+> kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml
+> kubectl proxy
+> kubectl get deployment/addresses -o yaml
+> kubectl get all
+
+
